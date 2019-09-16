@@ -56,7 +56,7 @@ class LoginView(View):
             user = authenticate(username=username, password=password)
             login(request, user)
             messages.add_message(self.request, messages.SUCCESS, f'Welcome {username}!')
-            return redirect(self.request.GET.get('next', 'pets-home'))
+            return redirect(self.request.GET.get('next', 'home'))
         except:
             messages.add_message(self.request, messages.ERROR,  'Invalid username or password')
             return redirect('accounts-login')
