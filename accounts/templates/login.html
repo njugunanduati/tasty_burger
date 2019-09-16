@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <!-- page details -->
+    <div class="breadcrumb-agile bg-light py-2">
+        <ol class="breadcrumb bg-light m-0">
+            <li class="breadcrumb-item">
+                <a href="{% url 'home' %}">Home</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Login Page</li>
+        </ol>
+    </div>
+    <!-- //page details -->
+
+    <!-- login -->
+    <div class="login-contect py-5">
+        <div class="container py-xl-5 py-3">
+            <div class="login-body">
+                <div class="login p-4 mx-auto">
+                    <h5 class="text-center mb-4">Log In</h5>
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{ form | crispy }}
+                        <button type="submit" class="btn submit mb-4">Login</button>
+                        <p class="forgot-w3ls text-center mb-3">
+                            <a href="{% url 'password_reset' %}" class="text-da">Forgot Password?</a>
+                        </p>
+                        <p class="account-w3ls text-center text-da">
+                            Don't have an account?
+                            <a href="{% url 'accounts-register' %}">Sign Up Now</a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //login -->
+{% endblock content %}
